@@ -65,4 +65,10 @@
 		<PackageReference Include="Microsoft.UI.Xaml" Version="2.8.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

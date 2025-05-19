@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Pages;
 
 namespace PizzaApp;
 
@@ -19,6 +20,8 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<HomePage>();
 
 		return builder.Build();
 	}
