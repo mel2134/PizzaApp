@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Pages;
+using Services;
+using ViewModels;
 
 namespace PizzaApp;
 
@@ -22,7 +24,13 @@ public static class MauiProgram
 #endif
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<HomePage>();
-
+		AddPizzaServices(builder.Services);
 		return builder.Build();
+	}
+	private static IServiceCollection AddPizzaServices(IServiceCollection services)
+	{
+		services.AddSingleton<PizzaService>();
+		services.AddSingletonWithShellRoute<HomePage, HomeViewModel>(nameof(HomePage));
+		return services;
 	}
 }

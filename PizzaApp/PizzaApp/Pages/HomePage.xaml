@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Pages.HomePage"
              Title="Pizza World"
-             Padding="15">
+             Padding="15"
+             xmlns:vm="clr-namespace:ViewModels"
+             xmlns:models="clr-namespace:Models"
+             x:DataType="vm:HomeViewModel">
     <ScrollView>
         <VerticalStackLayout>
             <Border StrokeShape="RoundRectangle 10"
@@ -35,10 +38,50 @@
                            Source="pizza1234.png"
                            HeightRequest="150"
                            WidthRequest="150"/>
-
                 </Grid>
-                
             </Border>
+            <BoxView HeightRequest="15"
+                     Color="Transparent"/>
+            <Border StrokeShape="RoundRectangle 22"
+                    StrokeThickness="2"
+                    Stroke="Goldenrod">
+                <Label Text="Search"
+                       TextColor="Goldenrod"
+                       FontSize="15"
+                       Padding="10,14"/>
+            </Border>
+            <BoxView HeightRequest="15"
+                     Color="Transparent"/>
+            <Grid ColumnDefinitions="*,*">
+                <Label Grid.Column="0"
+                       Text="Popular Items"
+                       VerticalOptions="End"
+                       FontSize="20"
+                       FontAttributes="Bold"/>
+                <Label Grid.Column="1"
+                       Text="View All"
+                       HorizontalOptions="End"
+                       VerticalOptions="End"
+                       TextDecorations="Underline"/>
+
+            </Grid>
+            <FlexLayout BindableLayout.ItemsSource="{Binding Pizzas}" Wrap="Wrap">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:Pizza">
+                        <Border StrokeShape="RoundRectangle 10"
+                                StrokeThickness="0"
+                                BackgroundColor="PaleGoldenrod"
+                                Padding="0"
+                                Margin="2">
+                            <Grid RowDefinitions="150,Auto,Auto,Auto" RowSpacing="5">
+                                <Image Grid.Row="0"
+                                       Source="{Binding Image}"/>
+                            </Grid>
+                            
+                        </Border>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
