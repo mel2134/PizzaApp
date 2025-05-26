@@ -86,8 +86,9 @@
                       HorizontalOptions="End"
                       VerticalOptions="Center">
                     <ImageButton Grid.Column="0"
-                                   Source="close.png"
-                                   Style="{StaticResource QuantityBtn}">
+                                 Source="close.png"
+                                 Style="{StaticResource QuantityBtn}"
+                                 Command="{Binding RemoveFromCartCommand}">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="Gold"/>
                         </ImageButton.Behaviors>
@@ -100,7 +101,8 @@
                            FontSize="25"/>
                     <ImageButton Grid.Column="2"
                                  Source="add.png"
-                                 Style="{StaticResource QuantityBtn}">
+                                 Style="{StaticResource QuantityBtn}"
+                                 Command="{Binding AddToCartCommand}">
                         <ImageButton.Behaviors>
                             <toolkit:IconTintColorBehavior TintColor="Gold"/>
                         </ImageButton.Behaviors>
@@ -115,7 +117,8 @@
                         CornerRadius="22"
                         Padding="80,10"
                         VerticalOptions="End"
-                        Margin="0,20"/>
+                        Margin="0,20"
+                        Command="{Binding ViewCartCommand}"/>
 
             </Grid>
         </Border>
