@@ -24,5 +24,11 @@ namespace ViewModels
         {
             await Shell.Current.GoToAsync(nameof(AllPizzasPage), animate:true, new Dictionary<string, object> { [nameof(AllPizzasViewModel.FromSearch)] = s});
         }
+        [RelayCommand]
+        private async Task GoToDetailsPage(Pizza p)
+        {
+            await Shell.Current.GoToAsync(nameof(DetailsPage), animate: true, new Dictionary<string, object> { [nameof(DetailsViewModel.Pizza)] = p });
+
+        }
     }
 }

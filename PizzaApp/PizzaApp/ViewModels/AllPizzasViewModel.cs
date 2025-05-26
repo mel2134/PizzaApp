@@ -5,6 +5,7 @@ using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Models;
+using Pages;
 using Services;
 
 namespace ViewModels
@@ -31,6 +32,11 @@ namespace ViewModels
             Searching = true;
             foreach (var pizza in _pizzaService.GetPizzas(search)) Pizzas.Add(pizza);
             Searching = false;
+        }
+        [RelayCommand]
+        private async Task GoToDetailsPage(Pizza p)
+        {
+            await Shell.Current.GoToAsync(nameof(DetailsPage), animate: true, new Dictionary<string, object> { [nameof(DetailsViewModel.Pizza)] = p });
         }
     }
 }
